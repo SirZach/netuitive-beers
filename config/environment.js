@@ -4,8 +4,11 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'beers',
     environment: environment,
+    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
     baseURL: '/',
     locationType: 'auto',
+    podModulePrefix: 'beers/pods',
+    firebase: 'netuitive-beer.firebaseIO.com',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

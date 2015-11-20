@@ -1,0 +1,37 @@
+{{#paper-content class="md-padding"}}
+  {{#paper-content class="md-whiteframe-z1 list-demo"}}
+    {{#paper-list}}
+      {{#each beers as |beer|}}
+        {{#paper-item class="md-3-line" action="subtractBeer" param=beer}}
+          <div class="md-avatar">{{beer.count}}</div>
+          <!-- <img src={{beer.label}} alt={{beer.name}} class="md-avatar"> -->
+          <div class="md-list-item-text">
+            <h3>{{beer.name}}</h3>
+            <h4>{{beer.description}}</h4>
+            <p>
+              {{beer.notes}}
+            </p>
+          </div>
+
+          {{#paper-button icon-button=true param=beer action="addBeer"}}
+            {{paper-icon icon="add"}}
+          {{/paper-button}}
+        {{/paper-item}}
+      {{/each}}
+    {{/paper-list}}
+  {{/paper-content}}
+{{/paper-content}}
+
+{{#if addingNewBeer}}
+  {{paper-input label="Name" value=newBeer.name}}
+  {{paper-input label="Description" value=newBeer.description}}
+  {{paper-input label="Notes" value=newBeer.notes}}
+  {{paper-input label="Count" value=newBeer.count}}
+
+  <div style="display: flex;">
+    {{paper-button action="addNewBeer" label="Cancel"}}
+    {{paper-button raised=true primary=true action="save" label="Save"}}
+  </div>
+{{else}}
+  {{paper-button raised=true primary=true action="addNewBeer" label="New Beer"}}
+{{/if}}
